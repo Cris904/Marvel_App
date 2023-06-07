@@ -4,7 +4,7 @@ const { MongoClient } = require('mongodb');
 const ejs = require('ejs');
 
 // Conecta con la base de datos MongoDB
-const uri = 'mongodb://127.0.0.1:27017'; // URI de conexión de MongoDB, modificar según la configuración
+const uri = 'mongodb+srv://cristianflo7:Zhongkui24@atlascluster.lxduy2m.mongodb.net/'; // URI de conexión de MongoDB, modificar según la configuración
 const client = new MongoClient(uri);
 
 app.set('view engine', 'ejs');
