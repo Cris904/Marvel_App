@@ -4,7 +4,7 @@ const ejs = require('ejs');
 
 const app = express();
 const port = process.env.PORT || 3000;
-const uri = process.env.MONGODB_URI; // La URL de conexión de MongoDB se configurará en Render
+const uri = process.env.MONGODB_URI || 'mongodb+srv://cristianflo7:Zhongkui24@atlascluster.lxduy2m.mongodb.net/?retryWrites=true&w=majority';
 const client = new MongoClient(uri);
 
 app.set('view engine', 'ejs');
