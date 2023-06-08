@@ -9,6 +9,7 @@ const client = new MongoClient(uri);
 
 app.set('view engine', 'ejs');
 
+// Ruta para mostrar la lista de comics
 app.get('/', async (req, res) => {
   try {
     await client.connect();
@@ -25,6 +26,12 @@ app.get('/', async (req, res) => {
   } finally {
     await client.close();
   }
+});
+
+// Ruta para obtener la dirección IP de la aplicación en Render
+app.get('/app-ip', (req, res) => {
+  const appIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  res.send(`App IP: ${appIp}`);
 });
 
 app.listen(port, () => {
