@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Comics</title>
+  <style>
+   body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+li {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+h2 {
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.p-creators {
+  font-weight: bold;
+}
+
+.creator-list {
+  padding-left: 20px;
+}
+
+.series {
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.year {
+  color: #888888;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+  <h1>Lista de Comics</h1>
+  <ul>
+    <% comics.forEach((comic) => { %>
+      <li>
+        <h2><%= comic.title %></h2>
+        <img src="<%= comic.thumbnail.path + '.' + comic.thumbnail.extension %>" alt="Comic Image">
+        <% if (comic.creators.items.length > 0) { %>
+          <p>Creadores:</p>
+          <ul>
+            <% comic.creators.items.forEach((creator) => { %>
+              <li><%= creator.name %></li>
+            <% }); %>
+          </ul>
+        <% } else { %>
+          <p>No hay creadores disponibles para este cómic.</p>
+        <% } %>
+        <% if (comic.series.name) { %>
+          <p>Serie: <%= comic.series.name %></p>
+        <% } else { %>
+          <p>Serie: No disponible</p>
+        <% } %>
+        <% if (comic.year) { %>
+          <p>Año de Creación: <%= comic.year %></p>
+        <% } else { %>
+          <p>Año de Creación: No disponible</p>
+        <% } %>
+      </li>
+    <% }); %>
+  </ul>
+</div>
+</body>
+</html>
